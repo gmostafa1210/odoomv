@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_test1_addon_tree" model="ir.ui.view">
+        <field name="name">test.addon.from.new</field>
+        <field name="model">test.addon.new</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_test1_addon_form" model="ir.ui.view">
+        <field name="name">test.addon.from.new</field>
+        <field name="model">test.addon.new</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Test Button" type="object" name="test_button_function" class="btn btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="test"/>
+                            
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="All Employees">
+                            <field name='employee_ids'/>
+                        </page>
+                        <page string="All Sales">
+                            <group string="Sales Group Header">
+                                <field name="sale_order_ids" widget="many2many_tags"/>
+                            </group>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_bista_test1_addon" model='ir.actions.act_window'>
+        <field name="name">Test Addon</field>
+        <field name="res_model">test.addon.new</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_test_addon_dept" parent="menu_test_addon_main" action="action_bista_test1_addon" name="Bista Department"/>
+</odoo>
